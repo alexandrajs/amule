@@ -4,7 +4,7 @@
 [![Code Climate](https://codeclimate.com/github/alexandrajs/mlc/badges/gpa.svg)](https://codeclimate.com/github/alexandrajs/mlc)
 ## Installation
 ```bash
-$ npm i alexandra-mlc
+$ npm i alexandrajs-mlc
 ```
 ## Usage
 ```javascript
