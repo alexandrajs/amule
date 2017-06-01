@@ -3,3 +3,6 @@ node_js:
   - 6
   - 7
   - 8
+addons:
+  code_climate:
+    repo_token: 5780950c3ebd05e5c4b3b8280126c40999dbe55a7ca7b5b3a2ba4c6130f014df
