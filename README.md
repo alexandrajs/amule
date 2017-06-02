@@ -1,12 +1,14 @@
 # MultiLayer Cache
+
 [![Build Status](https://travis-ci.org/alexandrajs/mlc.svg?branch=master)](https://travis-ci.org/alexandrajs/mlc)
 [![Coverage Status](https://coveralls.io/repos/github/alexandrajs/mlc/badge.svg?branch=master)](https://coveralls.io/github/alexandrajs/mlc?branch=master)
 [![Code Climate](https://codeclimate.com/github/alexandrajs/mlc/badges/gpa.svg)](https://codeclimate.com/github/alexandrajs/mlc)
 
 ## Installation
 ```bash
-$ npm i alexandrajs-mlc
+$ npm i alexandrajs-mlc --save
 ```
+
 ## Usage
 ```javascript
 const MLC = require('alexandrajs-mlc');
@@ -18,5 +20,6 @@ mlc.use(new Redis());
 
 // Use it as single cache
 ```
+
 ## API docs
 [AlexandraJS MultiLayer Cache API](http://alexandrajs.github.io/mlc/)
