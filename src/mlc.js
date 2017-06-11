@@ -64,8 +64,8 @@ MLC.prototype.delete = function (key, callback) {
  * @param cache Cache to be used in cache chain
  */
 MLC.prototype.use = function (cache) {
-	if (this.chain.head !== null) {
-		this.chain.head.value.next = cache;
+	if (this.chain.tail !== null) {
+		this.chain.tail.value.next = cache;
 	}
 	this.chain.push(cache);
 };

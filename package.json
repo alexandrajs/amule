@@ -1,6 +1,6 @@
 {
   "name": "alexandrajs-mlc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MultiLayer Cache",
   "main": "index.js",
   "dependencies": {

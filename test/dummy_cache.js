@@ -5,9 +5,19 @@
 const MLC = require('../');
 const mlc = new MLC();
 const assert = require('assert');
-mlc.use(new DummyCache({k1: 'k1l1'}, 'l1'));
-mlc.use(new DummyCache({k2: 'k2l2'}, 'l2'));
+const dc1 = new DummyCache({k1: 'k1l1'}, 'l1');
+const dc2 = new DummyCache({k2: 'k2l2'}, 'l2');
+const dc3 = new DummyCache({}, 'l3');
+mlc.use(dc1);
+mlc.use(dc2);
+mlc.use(dc3);
 describe('Dummy delayed cache', () => {
+	it('layers order', () => {
+		assert.strictEqual(mlc.chain.head.value, dc1);
+		assert.strictEqual(mlc.chain.head.value.next, dc2);
+		assert.strictEqual(mlc.chain.tail.value, dc3);
+		assert.strictEqual(mlc.chain.tail.value.next, null);
+	});
 	it('get lvl1', (done) => {
 		mlc.get('k1', function (err, value) {
 			assert.strictEqual(err, null);
