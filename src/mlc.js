@@ -60,14 +60,59 @@ MLC.prototype.delete = function (key, callback) {
 	callCacheMethod(this, 'delete', arguments);
 };
 /**
- * Adds new cache
- * @param cache Cache to be used in cache chain
+ * Adds new cache at end of cache chain
+ * @param {Object} cache Cache to be used in cache chain
+ * @returns {Object}
  */
-MLC.prototype.use = function (cache) {
+MLC.prototype.push = function (cache) {
 	if (this.chain.tail !== null) {
 		this.chain.tail.value.next = cache;
 	}
 	this.chain.push(cache);
+	return cache;
+};
+/**
+ * Alias of `MLC.push`
+ * @see {MLC.push}
+ */
+MLC.prototype.use = MLC.prototype.push;
+/**
+ * Cuts cache from end of cache chain
+ * @returns {Object|null}
+ */
+MLC.prototype.pop = function () {
+	const cache = this.chain.pop();
+	if(cache !== null) {
+		if(cache.prev !== null) {
+			cache.prev.value.next = null;
+		}
+		return cache.value;
+	}
+	return cache;
+};
+/**
+ * Adds new cache at begin of cache chain
+ * @param {Object} cache
+ * @returns {Object}
+ */
+MLC.prototype.unshift = function (cache) {
+	if (this.chain.head !== null) {
+		cache.next = this.chain.head.value;
+	}
+	this.chain.unshift(cache);
+	return cache;
+};
+/**
+ * Cuts cache from end of cache chain
+ * @returns {Object|null}
+ */
+MLC.prototype.shift = function () {
+	const cache = this.chain.shift();
+	if (cache !== null) {
+		cache.value.next = null;
+		return cache.value;
+	}
+	return cache;
 };
 /**
  *

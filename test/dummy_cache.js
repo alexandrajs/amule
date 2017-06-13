@@ -12,12 +12,6 @@ mlc.use(dc1);
 mlc.use(dc2);
 mlc.use(dc3);
 describe('Dummy delayed cache', () => {
-	it('layers order', () => {
-		assert.strictEqual(mlc.chain.head.value, dc1);
-		assert.strictEqual(mlc.chain.head.value.next, dc2);
-		assert.strictEqual(mlc.chain.tail.value, dc3);
-		assert.strictEqual(mlc.chain.tail.value.next, null);
-	});
 	it('get lvl1', (done) => {
 		mlc.get('k1', function (err, value) {
 			assert.strictEqual(err, null);
@@ -38,6 +32,64 @@ describe('Dummy delayed cache', () => {
 			assert.strictEqual(value, null);
 			done();
 		});
+	});
+});
+describe('chain manipulation', () => {
+	it('push', () => {
+		const mlc = new MLC();
+		const c1 = {next: null}, c2 = {next: null}, c3 = {next: null};
+		assert.strictEqual(mlc.push(c1), c1);
+		assert.strictEqual(c1.next, null);
+		assert.strictEqual(mlc.push(c2), c2);
+		assert.strictEqual(c1.next, c2);
+		assert.strictEqual(c2.next, null);
+		assert.strictEqual(mlc.push(c3), c3);
+		assert.strictEqual(c1.next, c2);
+		assert.strictEqual(c2.next, c3);
+		assert.strictEqual(c3.next, null);
+	});
+	it('pop', () => {
+		const mlc = new MLC();
+		const c1 = {next: null}, c2 = {next: null}, c3 = {next: null};
+		mlc.push(c1);
+		mlc.push(c2);
+		mlc.push(c3);
+		assert.strictEqual(mlc.pop(), c3);
+		assert.strictEqual(c2.next, null);
+		assert.strictEqual(c3.next, null);
+		assert.strictEqual(mlc.pop(), c2);
+		assert.strictEqual(c1.next, null);
+		assert.strictEqual(c2.next, null);
+		assert.strictEqual(mlc.pop(), c1);
+		assert.strictEqual(c1.next, null);
+		assert.strictEqual(mlc.pop(), null);
+	});
+	it('unshift', () => {
+		const mlc = new MLC();
+		const c1 = {next: null}, c2 = {next: null}, c3 = {next: null};
+		assert.strictEqual(mlc.unshift(c1), c1);
+		assert.strictEqual(c1.next, null);
+		assert.strictEqual(mlc.unshift(c2), c2);
+		assert.strictEqual(c2.next, c1);
+		assert.strictEqual(c1.next, null);
+		assert.strictEqual(mlc.unshift(c3), c3);
+		assert.strictEqual(c3.next, c2);
+		assert.strictEqual(c2.next, c1);
+		assert.strictEqual(c1.next, null);
+	});
+	it('shift', () => {
+		const mlc = new MLC();
+		const c1 = {next: null}, c2 = {next: null}, c3 = {next: null};
+		mlc.unshift(c1);
+		mlc.unshift(c2);
+		mlc.unshift(c3);
+		assert.strictEqual(mlc.shift(), c3);
+		assert.strictEqual(c3.next, null);
+		assert.strictEqual(mlc.shift(), c2);
+		assert.strictEqual(c2.next, null);
+		assert.strictEqual(mlc.shift(), c1);
+		assert.strictEqual(c1.next, null);
+		assert.strictEqual(mlc.shift(), null);
 	});
 });
 function DummyCache(data, name) {
