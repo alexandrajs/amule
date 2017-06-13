@@ -29,34 +29,38 @@ function MLC(options) {
 /**
  *
  * @param key
+ * @param field
  * @param callback
  */
-MLC.prototype.get = function (key, callback) {
+MLC.prototype.get = function (key, field, callback) {
 	callCacheMethod(this, 'get', arguments);
 };
 /**
  *
  * @param key
+ * @param field
  * @param value
  * @param callback
  */
-MLC.prototype.set = function (key, value, callback) {
+MLC.prototype.set = function (key, field, value, callback) {
 	callCacheMethod(this, 'set', arguments);
 };
 /**
  *
  * @param key
+ * @param field
  * @param callback
  */
-MLC.prototype.has = function (key, callback) {
+MLC.prototype.has = function (key, field, callback) {
 	callCacheMethod(this, 'has', arguments);
 };
 /**
  *
  * @param key
+ * @param field
  * @param callback
  */
-MLC.prototype.delete = function (key, callback) {
+MLC.prototype.delete = function (key, field, callback) {
 	callCacheMethod(this, 'delete', arguments);
 };
 /**
