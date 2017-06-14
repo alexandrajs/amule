@@ -107,7 +107,9 @@ DummyCache.prototype.get = function (key, field, callback) {
 				if (err) {
 					return callback(err);
 				}
-				if(!this.data[key]) {}
+				if(!this.data[key]) {
+					this.data[key] = {};
+				}
 				this.data[key][field] = value;
 				callback(null, value);
 			});
