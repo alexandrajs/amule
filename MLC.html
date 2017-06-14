@@ -307,6 +307,77 @@
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<hr>
+<dt class="name" id="use">
+    <h4 id="use"><span class="type-signature"></span>use<span class="type-signature"></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Alias of `MLC.push`
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+	<dt class="tag-see method-doc-label method-doc-details-label">See:</dt>
+	<dd class="tag-see">
+		<ul>
+			<li>{MLC.push}</li>
+			</ul>
+	</dd>
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        </dl>
+    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -433,7 +504,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="delete"><span class="type-signature"></span>delete(key, callback)</h4>
+    <h4 class="name" id="delete"><span class="type-signature"></span>delete(key, field, callback)</h4>
     
     
 </dt>
@@ -473,6 +544,24 @@
         <tr>
             
                 <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>field</code></td>
             
 
             <td class="type">
@@ -569,7 +658,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="get"><span class="type-signature"></span>get(key, callback)</h4>
+    <h4 class="name" id="get"><span class="type-signature"></span>get(key, field, callback)</h4>
     
     
 </dt>
@@ -609,6 +698,24 @@
         <tr>
             
                 <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>field</code></td>
             
 
             <td class="type">
@@ -705,7 +812,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="has"><span class="type-signature"></span>has(key, callback)</h4>
+    <h4 class="name" id="has"><span class="type-signature"></span>has(key, field, callback)</h4>
     
     
 </dt>
@@ -745,6 +852,24 @@
         <tr>
             
                 <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>field</code></td>
             
 
             <td class="type">
@@ -841,7 +966,256 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="set"><span class="type-signature"></span>set(key, value, callback)</h4>
+    <h4 class="name" id="pop"><span class="type-signature"></span>pop()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Cuts cache from end of cache chain
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">null</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="push"><span class="type-signature"></span>push(cache)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Adds new cache at end of cache chain
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>cache</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Cache to be used in cache chain</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="set"><span class="type-signature"></span>set(key, field, value, callback)</h4>
     
     
 </dt>
@@ -881,6 +1255,24 @@
         <tr>
             
                 <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>field</code></td>
             
 
             <td class="type">
@@ -995,7 +1387,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="use"><span class="type-signature"></span>use(cache)</h4>
+    <h4 class="name" id="shift"><span class="type-signature"></span>shift()</h4>
     
     
 </dt>
@@ -1003,7 +1395,108 @@
 
     
     <div class="description">
-        Adds new cache
+        Cuts cache from end of cache chain
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">null</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="unshift"><span class="type-signature"></span>unshift(cache)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Adds new cache at begin of cache chain
     </div>
     
 
@@ -1043,13 +1536,19 @@
 
             <td class="type">
             
+                
+<span class="param-type">Object</span>
+
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last">Cache to be used in cache chain</td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -1109,6 +1608,26 @@
     
 
     
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
 
     
 </dd>
@@ -1163,7 +1682,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on 2017-05-31T23:23:34+02:00
+		on 2017-06-15T00:05:36+02:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
