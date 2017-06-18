@@ -2,5 +2,5 @@
 /**
  * @author Michał Żaloudik <ponury.kostek@gmail.com>
  */
-const MLC = require('./src/mlc');
-module.exports = MLC;
+const AMule = require('./src/amule');
+module.exports = AMule;
