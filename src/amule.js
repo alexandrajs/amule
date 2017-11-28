@@ -22,7 +22,7 @@ const Yadll = require('yadll');
  * @property {Yadll} chain
  * @constructor
  */
-function MLC(options) {
+function AMule(options) {
 	this.options = utls.extend({}, options || {});
 	this.chain = new Yadll();
 }
@@ -32,7 +32,7 @@ function MLC(options) {
  * @param field
  * @param callback
  */
-MLC.prototype.get = function (key, field, callback) {
+AMule.prototype.get = function (key, field, callback) {
 	callCacheMethod(this, 'get', arguments);
 };
 /**
@@ -42,7 +42,7 @@ MLC.prototype.get = function (key, field, callback) {
  * @param value
  * @param callback
  */
-MLC.prototype.set = function (key, field, value, callback) {
+AMule.prototype.set = function (key, field, value, callback) {
 	callCacheMethod(this, 'set', arguments);
 };
 /**
@@ -51,7 +51,7 @@ MLC.prototype.set = function (key, field, value, callback) {
  * @param field
  * @param callback
  */
-MLC.prototype.has = function (key, field, callback) {
+AMule.prototype.has = function (key, field, callback) {
 	callCacheMethod(this, 'has', arguments);
 };
 /**
@@ -60,7 +60,7 @@ MLC.prototype.has = function (key, field, callback) {
  * @param field
  * @param callback
  */
-MLC.prototype.delete = function (key, field, callback) {
+AMule.prototype.delete = function (key, field, callback) {
 	callCacheMethod(this, 'delete', arguments);
 };
 /**
@@ -68,7 +68,7 @@ MLC.prototype.delete = function (key, field, callback) {
  * @param {Object} cache Cache to be used in cache chain
  * @returns {Object}
  */
-MLC.prototype.push = function (cache) {
+AMule.prototype.push = function (cache) {
 	if (this.chain.tail !== null) {
 		this.chain.tail.value.next = cache;
 	}
@@ -76,15 +76,15 @@ MLC.prototype.push = function (cache) {
 	return cache;
 };
 /**
- * Alias of `MLC.push`
- * @see {MLC.push}
+ * Alias of `AMule.push`
+ * @see {AMule.push}
  */
-MLC.prototype.use = MLC.prototype.push;
+AMule.prototype.use = AMule.prototype.push;
 /**
  * Cuts cache from end of cache chain
  * @returns {Object|null}
  */
-MLC.prototype.pop = function () {
+AMule.prototype.pop = function () {
 	const cache = this.chain.pop();
 	if(cache !== null) {
 		if(cache.prev !== null) {
@@ -99,7 +99,7 @@ MLC.prototype.pop = function () {
  * @param {Object} cache
  * @returns {Object}
  */
-MLC.prototype.unshift = function (cache) {
+AMule.prototype.unshift = function (cache) {
 	if (this.chain.head !== null) {
 		cache.next = this.chain.head.value;
 	}
@@ -110,7 +110,7 @@ MLC.prototype.unshift = function (cache) {
  * Cuts cache from end of cache chain
  * @returns {Object|null}
  */
-MLC.prototype.shift = function () {
+AMule.prototype.shift = function () {
 	const cache = this.chain.shift();
 	if (cache !== null) {
 		cache.value.next = null;
@@ -122,14 +122,14 @@ MLC.prototype.shift = function () {
  *
  * @param callback
  */
-MLC.prototype.clear = function (callback) {
+AMule.prototype.clear = function (callback) {
 	callCacheMethod(this, 'clear', arguments);
 };
 /**
  *
- * @type {MLC}
+ * @type {AMule}
  */
-module.exports = MLC;
+module.exports = AMule;
 /**
  *
  * @param cache
