@@ -1,8 +1,8 @@
 # MultiLayer Cache
 
-[![Build Status](https://travis-ci.org/alexandrajs/aMule.svg?branch=master)](https://travis-ci.org/alexandrajs/aMule)
-[![Coverage Status](https://coveralls.io/repos/github/alexandrajs/aMule/badge.svg?branch=master)](https://coveralls.io/github/alexandrajs/aMule?branch=master)
-[![Code Climate](https://codeclimate.com/github/alexandrajs/aMule/badges/gpa.svg)](https://codeclimate.com/github/alexandrajs/aMule)
+[![Build Status](https://travis-ci.org/alexandrajs/amule.svg?branch=master)](https://travis-ci.org/alexandrajs/amule)
+[![Coverage Status](https://coveralls.io/repos/github/alexandrajs/amule/badge.svg?branch=master)](https://coveralls.io/github/alexandrajs/amule?branch=master)
+[![Code Climate](https://codeclimate.com/github/alexandrajs/amule/badges/gpa.svg)](https://codeclimate.com/github/alexandrajs/amule)
 
 ## Installation
 ```bash
@@ -22,4 +22,4 @@ amule.use(new Redis());
 ```
 
 ## API docs
-[AlexandraJS MultiLevel Cache API](http://alexandrajs.github.io/aMule/)
+[AlexandraJS MultiLevel Cache API](http://alexandrajs.github.io/amule/)
