@@ -1,19 +1,16 @@
-'use strict';
+"use strict";
 /**
  * @author Michał Żaloudik <ponury.kostek@gmail.com>
  */
-/**
- *
- * @type {utls}
- * @see https://github.com/ponury-kostek/utls
- */
-const utls = require('utls');
+const fast = require("fast.js");
+const ExtError = require("exterror");
 /**
  *
  * @type {Yadll}
  * @see https://github.com/ponury-kostek/yadll
  */
-const Yadll = require('yadll');
+const Yadll = require("yadll");
+
 /**
  * AlexandraJS MultiLayer Cache
  * @author Michał Żaloudik <ponury.kostek@gmail.com>
@@ -23,9 +20,10 @@ const Yadll = require('yadll');
  * @constructor
  */
 function AMule(options) {
-	this.options = utls.extend({}, options || {});
+	this.options = fast.assign({}, options || {});
 	this.chain = new Yadll();
 }
+
 /**
  *
  * @param key
@@ -33,7 +31,7 @@ function AMule(options) {
  * @param callback
  */
 AMule.prototype.get = function (key, field, callback) {
-	callCacheMethod(this, 'get', arguments);
+	callCacheMethod(this, "get", arguments);
 };
 /**
  *
@@ -43,7 +41,7 @@ AMule.prototype.get = function (key, field, callback) {
  * @param callback
  */
 AMule.prototype.set = function (key, field, value, callback) {
-	callCacheMethod(this, 'set', arguments);
+	callCacheMethod(this, "set", arguments);
 };
 /**
  *
@@ -52,7 +50,7 @@ AMule.prototype.set = function (key, field, value, callback) {
  * @param callback
  */
 AMule.prototype.has = function (key, field, callback) {
-	callCacheMethod(this, 'has', arguments);
+	callCacheMethod(this, "has", arguments);
 };
 /**
  *
@@ -61,7 +59,7 @@ AMule.prototype.has = function (key, field, callback) {
  * @param callback
  */
 AMule.prototype.delete = function (key, field, callback) {
-	callCacheMethod(this, 'delete', arguments);
+	callCacheMethod(this, "delete", arguments);
 };
 /**
  * Adds new cache at end of cache chain
@@ -86,8 +84,8 @@ AMule.prototype.use = AMule.prototype.push;
  */
 AMule.prototype.pop = function () {
 	const cache = this.chain.pop();
-	if(cache !== null) {
-		if(cache.prev !== null) {
+	if (cache !== null) {
+		if (cache.prev !== null) {
 			cache.prev.value.next = null;
 		}
 		return cache.value;
@@ -123,13 +121,14 @@ AMule.prototype.shift = function () {
  * @param callback
  */
 AMule.prototype.clear = function (callback) {
-	callCacheMethod(this, 'clear', arguments);
+	callCacheMethod(this, "clear", arguments);
 };
 /**
  *
  * @type {AMule}
  */
 module.exports = AMule;
+
 /**
  *
  * @param cache
@@ -139,7 +138,7 @@ module.exports = AMule;
  */
 function callCacheMethod(cache, name, args) {
 	if (cache.chain.head === null) {
-		return args[args.length - 1](new Error('Cache chain is empty'));
+		return args[args.length - 1](new ExtError("ERR_EMPTY_CACHE_CHAIN", "Cache chain is empty"));
 	}
 	cache.chain.head.value[name].apply(cache.chain.head.value, args);
 }
