@@ -33,12 +33,7 @@ class Layer {
 	 * @param {function} callback
 	 */
 	has(key, field, callback) {
-		this._has(key, field, (err, value) => {
-			if (err || value === null) {
-				return callback(null, false);
-			}
-			callback(null, true);
-		});
+		this._has(key, field, callback);
 	}
 
 	/**
