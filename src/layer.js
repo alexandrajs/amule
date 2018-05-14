@@ -58,6 +58,9 @@ class Layer {
 				key,
 				field
 			], (err, value) => {
+				if (err) {
+					return callback(err, value);
+				}
 				this._set(key, field, value, () => {
 					callback(null, value);
 				});
