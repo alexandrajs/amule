@@ -24,7 +24,7 @@ class Layer {
 			return next[name].apply(next, args);
 		}
 		callback(err, null);
-	};
+	}
 
 	/**
 	 *
@@ -39,7 +39,7 @@ class Layer {
 			}
 			callback(null, true);
 		});
-	};
+	}
 
 	/**
 	 *
@@ -63,7 +63,7 @@ class Layer {
 				});
 			});
 		});
-	};
+	}
 
 	/**
 	 *
@@ -80,7 +80,7 @@ class Layer {
 				value
 			], callback);
 		});
-	};
+	}
 
 	/**
 	 *
@@ -95,7 +95,7 @@ class Layer {
 				field
 			], callback);
 		});
-	};
+	}
 
 	/**
 	 * @param {function} callback
@@ -104,7 +104,7 @@ class Layer {
 		this._clear((err) => {
 			this._next(err, "clear", [], callback);
 		});
-	};
+	}
 
 	/**
 	 * @param [clear]
@@ -117,7 +117,7 @@ class Layer {
 			this.clearStats();
 		}
 		return stats;
-	};
+	}
 
 	/**
 	 *
@@ -127,7 +127,7 @@ class Layer {
 			hits: 0,
 			misses: 0
 		};
-	};
+	}
 }
 
 module.exports = Layer;
