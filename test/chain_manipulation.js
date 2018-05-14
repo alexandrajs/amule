@@ -3,37 +3,7 @@
  * @author Michał Żaloudik <ponury.kostek@gmail.com>
  */
 const AMule = require("../");
-const mule = new AMule();
 const assert = require("assert");
-const dc1 = new DummyCache({k1: {f1: "k1l1"}}, "l1");
-const dc2 = new DummyCache({k2: {f2: "k2l2"}}, "l2");
-const dc3 = new DummyCache({}, "l3");
-mule.use(dc1);
-mule.use(dc2);
-mule.use(dc3);
-describe("Dummy delayed cache", () => {
-	it("get lvl1", (done) => {
-		mule.get("k1", "f1", function (err, value) {
-			assert.strictEqual(err, null);
-			assert.strictEqual(value, "k1l1");
-			done();
-		});
-	});
-	it("get lvl2", (done) => {
-		mule.get("k2", "f2", function (err, value) {
-			assert.strictEqual(err, null);
-			assert.strictEqual(value, "k2l2");
-			done();
-		});
-	});
-	it("get non existing", (done) => {
-		mule.get("k3", "f3", function (err, value) {
-			assert.equal(err, null);
-			assert.strictEqual(value, null);
-			done();
-		});
-	});
-});
 describe("chain manipulation", () => {
 	it("push", () => {
 		const mule = new AMule();
@@ -92,30 +62,3 @@ describe("chain manipulation", () => {
 		assert.strictEqual(mule.shift(), null);
 	});
 });
-
-function DummyCache(data, name) {
-	this.name = name;
-	this.data = data;
-	this.next = null;
-}
-
-DummyCache.prototype.get = function (key, field, callback) {
-	process.nextTick(() => {
-		if (this.data[key] && this.data[key][field]) {
-			return callback(null, this.data[key][field]);
-		}
-		if (this.next) {
-			return this.next.get(key, field, (err, value) => {
-				if (err) {
-					return callback(err);
-				}
-				if (!this.data[key]) {
-					this.data[key] = {};
-				}
-				this.data[key][field] = value;
-				callback(null, value);
-			});
-		}
-		callback(null, null);
-	}, 1);
-};
