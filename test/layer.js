@@ -107,11 +107,11 @@ describe("Layer", () => {
 						assert.strictEqual(val, "value");
 						let stats = rush.getStats(true);
 						assert.strictEqual(stats.misses, 1);
-						assert.strictEqual(stats.ratio, 1);
+						assert.strictEqual(stats.ratio, 0.5);
 						assert.strictEqual(stats.hits, 1);
 						stats = rush.getStats();
 						assert.strictEqual(stats.misses, 0);
-						assert.strictEqual(stats.ratio, 0);
+						assert.strictEqual(stats.ratio, NaN);
 						assert.strictEqual(stats.hits, 0);
 						done();
 					});

@@ -45,10 +45,10 @@ class Layer {
 	get(key, field, callback) {
 		this._get(key, field, (err, value) => {
 			if (!err && value !== null) {
-				this.stats.hits++;
+				this.stats.hits += 1;
 				return callback(null, value);
 			}
-			this.stats.misses++;
+			this.stats.misses += 1;
 			this._next(err, "get", [
 				key,
 				field
@@ -110,7 +110,7 @@ class Layer {
 	 */
 	getStats(clear) {
 		const stats = this.stats;
-		stats.ratio = stats.hits && stats.misses ? stats.hits / stats.misses : 0;
+		stats.ratio = stats.hits / (stats.misses + stats.hits);
 		if (clear) {
 			this.clearStats();
 		}
@@ -123,7 +123,8 @@ class Layer {
 	clearStats() {
 		this.stats = {
 			hits: 0,
-			misses: 0
+			misses: 0,
+			ratio: 0
 		};
 	}
 }
