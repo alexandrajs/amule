@@ -111,7 +111,7 @@ describe("Layer", () => {
 						assert.strictEqual(stats.hits, 1);
 						stats = rush.getStats();
 						assert.strictEqual(stats.misses, 0);
-						assert.strictEqual(stats.ratio, NaN);
+						assert(Number.isNaN(stats.ratio));
 						assert.strictEqual(stats.hits, 0);
 						done();
 					});
