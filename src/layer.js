@@ -20,8 +20,7 @@ class Layer {
 	_next(err, name, args, callback) {
 		const next = this.next;
 		if (next !== null) {
-			args.push(callback);
-			return next[name].apply(next, args);
+			return next[name].apply(next, args.concat(callback));
 		}
 		callback(err, null);
 	}
