@@ -50,7 +50,7 @@ describe("throw", () => {
 		it("has", (done) => {
 			mule.has("key", function (err, has) {
 				assert(err instanceof Error);
-				assert.strictEqual(err.message, "_has");
+				assert.strictEqual(err.message, "Cache internal error: _has");
 				assert.strictEqual(has, undefined);
 				done();
 			});
@@ -58,7 +58,7 @@ describe("throw", () => {
 		it("get", (done) => {
 			mule.get("key", function (err, value) {
 				assert(err instanceof Error);
-				assert.strictEqual(err.message, "_get");
+				assert.strictEqual(err.message, "Cache internal error: _get");
 				assert.strictEqual(value, undefined);
 				done();
 			});
@@ -66,21 +66,21 @@ describe("throw", () => {
 		it("set", (done) => {
 			mule.set("key", "value", function (err) {
 				assert(err instanceof Error);
-				assert.strictEqual(err.message, "_set");
+				assert.strictEqual(err.message, "Cache internal error: _set");
 				done();
 			});
 		});
 		it("delete", (done) => {
 			mule.delete("key", function (err) {
 				assert(err instanceof Error);
-				assert.strictEqual(err.message, "_delete");
+				assert.strictEqual(err.message, "Cache internal error: _delete");
 				done();
 			});
 		});
 		it("clear", (done) => {
 			mule.clear(function (err) {
 				assert(err instanceof Error);
-				assert.strictEqual(err.message, "_clear");
+				assert.strictEqual(err.message, "Cache internal error: _clear");
 				done();
 			});
 		});
