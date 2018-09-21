@@ -140,5 +140,10 @@ function callCacheMethod(cache, name, args) {
 	if (cache.chain.head === null) {
 		return args[args.length - 1](new ExtError("ERR_EMPTY_CACHE_CHAIN", "Cache chain is empty"));
 	}
-	cache.chain.head.value[name].apply(cache.chain.head.value, args);
+	try {
+		cache.chain.head.value[name].apply(cache.chain.head.value, args);
+	} catch (e) {
+		// try to call method callback
+		args[args.length - 1](new ExtError("ERR_CACHE_INTERNAL_ERROR", "Cache internal error: " + e.message));
+	}
 }
